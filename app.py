@@ -14,12 +14,13 @@ def init_excel():
         ws.append(["Full Name", "Birthdate", "Phone Number", "Favorite Drink", "Register Date"])
         wb.save(EXCEL_FILE)
 
+# -----------------------
+# Rutas
+# -----------------------
+
 @app.route('/')
 def portal():
     return render_template('portal.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -41,11 +42,12 @@ def save():
         
         wb.save(EXCEL_FILE)
         
+        # Redirección después de guardar
         return '''
         <script>
             // Primero libera el acceso WiFi
             window.location.href = "http://connectivitycheck.gstatic.com/generate_204";
-            // Luego redirige a Google (se ejecutará después de la liberación)
+            // Luego redirige a Google
             setTimeout(function() {
                 window.location.href = "https://www.google.com";
             }, 100);
@@ -55,6 +57,27 @@ def save():
     except Exception as e:
         return f"Error: {str(e)}", 500
 
+# Ruta para UniFi captive portal
+@app.route('/guest/s/default/')
+def unifi_guest():
+    """
+    Simula la ruta que UniFi espera.
+    Los parámetros (id, ap, url, ssid) se reciben por querystring.
+    """
+    client_id = request.args.get("id")
+    ap_mac = request.args.get("ap")
+    redirect_url = request.args.get("url", "https://www.google.com")
+    ssid = request.args.get("ssid")
+
+    # Aquí podrías registrar datos en logs o BD si lo necesitas
+    print(f"UniFi request: id={client_id}, ap={ap_mac}, ssid={ssid}, url={redirect_url}")
+
+    # Mostrar portal.html pero manteniendo el redirect_url
+    return render_template("portal.html", redirect_url=redirect_url)
+
+# -----------------------
+# Inicialización
+# -----------------------
 if __name__ == '__main__':
     init_excel()
     app.run(host='0.0.0.0', port=5000, debug=True)
