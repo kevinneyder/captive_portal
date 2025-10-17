@@ -139,24 +139,35 @@
         </div>
         
         <form method="POST" action="/save">
+
+            <input type="hidden" name="client_id" value="{{ client_id }}">
+            <input type="hidden" name="redirect_url" value="{{ redirect_url }}">
             <div class="form-group">
-                <label for="name">Nombre Completo</label>
-                <input type="text" id="name" name="name" placeholder="Ingresa tu nombre" required>
+                <label for="age">Edad</label>
+                <input type="number" id="age" name="age" placeholder="Ingresa tu edad" min="10" max="100" required>
             </div>
             
             <div class="form-group">
-                <label for="birthdate">Fecha de Nacimiento</label>
-                <input type="date" id="birthdate" name="birthdate" required>
+                <label for="gender">Género</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Selecciona tu Género</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Femenino</option>
+                </select>
             </div>
             
             <div class="form-group">
-                <label for="phone">Número de Celular</label>
-                <input type="tel" id="phone" name="phone" placeholder="71234567" pattern="[67][0-9]{7}" required>
-                <span class="small-text">Formato: 8 dígitos comenzando con 6 o 7</span>
+                <label for="zone">¿En qué zona vive?</label>
+                <input type="text" id="zone" name="zone" placeholder="Respuesta" required>
             </div>
             
             <div class="form-group">
-                <label for="drink">Preferencia de Bebida</label>
+                <label for="sourceInfo">¿Dónde escuchaste sobre HAPPY TEA?</label>
+                <input type="text" id="sourceInfo" name="sourceInfo" placeholder="Respuesta" required>
+            </div>
+
+            <div class="form-group">
+                <label for="drink">¿Bebida Favorita?</label>
                 <select id="drink" name="drink" required>
                     <option value="" disabled selected>Selecciona tu favorita</option>
                     <option value="Té Tradicional">Té Tradicional</option>
@@ -167,8 +178,8 @@
                     <option value="Infusión Herbales">Infusión Herbales</option>
                 </select>
             </div>
-            
-            <button type="submit">OBTENER ACCESO</button>
+
+            <button type="submit">ENVIAR</button>
         </form>
         
         <div class="footer">
