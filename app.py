@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, send_from_directory
 from openpyxl import Workbook, load_workbook
 from datetime import datetime
 import requests
@@ -10,7 +10,7 @@ app = Flask(__name__)
 # CONFIGURATION
 # ==============================
 EXCEL_FILE = "happy_tea_clients.xlsx"
-UNIFI_CONTROLLER_IP = "192.168.100.196"
+UNIFI_CONTROLLER_IP = "192.168.0.14"
 UNIFI_PORT = 8443
 UNIFI_USERNAME = "admin"
 UNIFI_PASSWORD = "admin"
@@ -112,6 +112,15 @@ def unifi_authorize_guest(session, client_mac, minutes=1440):
         log(f"Error authorizing client: {e}", "ERROR")
 
     return False
+
+
+# ==============================
+# CUSTOM STATIC ROUTE
+# ==============================
+@app.route("/templates/static/<path:filename>")
+def custom_static(filename):
+    """Serve static files from templates/static directory."""
+    return send_from_directory("templates/static", filename)
 
 
 # ==============================

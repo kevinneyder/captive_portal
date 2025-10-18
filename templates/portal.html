@@ -1,220 +1,242 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Tea - WiFi</title>
     <style>
-        :root {
-            --color-primary: #fcc40b;
-            --color-secondary: #000000;
-            --color-text: #333333;
-            --color-light: #f8f8f8;
-            --color-white: #ffffff;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('https://www.mercat.bo/happy-tea/images/background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--color-text);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.5;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .container {
-            max-width: 350px;
-            background-color: rgba(255, 255, 255, 0.93);
-            padding: 10px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(2px);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            max-width: 150px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            color: var(--color-primary);
-            margin: 10px 0 15px;
-            font-size: 16px;
-            font-weight: 600;
-            padding: 0 55px;
-        }
-        
-        .form-group {
-            margin-bottom: 16px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: var(--color-secondary);
-            font-weight: bold;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            box-sizing: border-box;
-            transition: all 0.3s;
-        }
-        
-        input:focus, select:focus {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 2px rgba(139, 195, 74, 0.2);
-            outline: none;
-        }
-        
-        button {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 5px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: var(--color-secondary);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-        
-        .small-text {
-            font-size: 11px;
-            color: #777;
-            display: block;
-            margin-top: 4px;
-        }
+      :root {
+        --color-primary: #fcc40b;
+        --color-secondary: #000000;
+        --color-text: #333333;
+        --color-light: #f8f8f8;
+        --color-white: #ffffff;
+      }
 
-        /* Efecto de carga para el fondo */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+      body {
+        animation: fadeIn 0.5s ease-in-out;
+        font-family: "Arial", sans-serif;
+        background: url("/templates/static/images/background.jpeg");
+        color: var(--color-text);
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        max-width: 350px;
+        background-color: rgba(255, 255, 255, 0.93);
+        padding: 0 40px 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(2px);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        max-width: 120px;
+      }
+
+      h2 {
+        color: var(--color-primary);
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 0 55px;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: var(--color-secondary);
+        font-weight: bold;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+      }
+
+      select:invalid {
+        color: #999;
+      }
+
+      select option {
+        color: #000;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 2px rgba(139, 195, 74, 0.2);
+        outline: none;
+      }
+
+      button {
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: var(--color-secondary);
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .small-text {
+        font-size: 11px;
+        color: #777;
+        display: block;
+        margin-top: 4px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
-        body {
-            animation: fadeIn 0.5s ease-in-out;
+        to {
+          opacity: 1;
         }
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <!-- <div>
-            <img src="{{ url_for('static', filename='images/logo')}}" alt="no logo found">
-
-            <img src="../templates/logo.png" alt="no logo found">
-        </div> -->
+  </head>
+  <body>
+    <div class="body-container">
+      <div class="container">
         <div class="header">
-            <!-- Logo de Happy Tea -->
-            <img src="https://www.mercat.bo/happy-tea/images/logo.png" alt="Happy Tea" class="logo" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 50\"%3E%3Ctext x=\"0\" y=\"35\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"36\" fill=\"%238BC34A\"%3EHAPPY TEA%3C/text%3E%3C/svg%3E'">
-            <h2>Conéctate a nuestra WiFi</h2>
+          <img
+            src="/templates/static/images/HappyTeaLogo.png"
+            alt="Happy Tea"
+            class="logo"
+          />
+          <h2>Conécate a nuestro WiFi</h2>
         </div>
-        
+
         <form method="POST" action="/save">
+          <input type="hidden" name="client_id" value="{{ client_id }}" />
+          <input type="hidden" name="redirect_url" value="{{ redirect_url }}" />
+          <div class="form-group">
+            <label for="age">Edad</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="Ingresa tu edad"
+              min="10"
+              max="100"
+              required
+            />
+          </div>
 
-            <input type="hidden" name="client_id" value="{{ client_id }}">
-            <input type="hidden" name="redirect_url" value="{{ redirect_url }}">
-            <div class="form-group">
-                <label for="age">Edad</label>
-                <input type="number" id="age" name="age" placeholder="Ingresa tu edad" min="10" max="100" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="gender">Género</label>
-                <select id="gender" name="gender" required>
-                    <option value="" disabled selected>Selecciona tu Género</option>
-                    <option value="male">Masculino</option>
-                    <option value="female">Femenino</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="zone">¿En qué zona vive?</label>
-                <input type="text" id="zone" name="zone" placeholder="Respuesta" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="sourceInfo">¿Dónde escuchaste sobre HAPPY TEA?</label>
-                <input type="text" id="sourceInfo" name="sourceInfo" placeholder="Respuesta" required>
-            </div>
+          <div class="form-group">
+            <label for="gender">Género</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Selecciona tu Género</option>
+              <option value="male">Masculino</option>
+              <option value="female">Femenino</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
 
-            <div class="form-group">
-                <label for="drink">¿Bebida Favorita?</label>
-                <select id="drink" name="drink" required>
-                    <option value="" disabled selected>Selecciona tu favorita</option>
-                    <option value="Té Tradicional">Té Tradicional</option>
-                    <option value="Té Frutal">Té Frutal</option>
-                    <option value="Té Verde">Té Verde</option>
-                    <option value="Matcha Latte">Matcha Latte</option>
-                    <option value="Café Especial">Café Especial</option>
-                    <option value="Infusión Herbales">Infusión Herbales</option>
-                </select>
-            </div>
+          <div class="form-group">
+            <label for="zone">¿En qué zona vive?</label>
+            <input
+              type="text"
+              id="zone"
+              name="zone"
+              placeholder="Ej: Queru queru, Tupuraya"
+              required
+            />
+          </div>
 
-            <button type="submit">ENVIAR</button>
+          <div class="form-group">
+            <label for="sourceInfo">¿Dónde escuchaste sobre HAPPY TEA?</label>
+            <select id="sourceInfo" name="sourceInfo" required>
+              <option value="" disabled selected>¿Dónde escuchaste sobre HAPPY TEA?</option>
+              <option value="redes sociales">Redes Sociales</option>
+              <option value="publicidad">Publicidad</option>
+              <option value="recomendaciones">Recomendaciones</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="drink">¿Bebida Favorita?</label>
+            <select id="drink" name="drink" required>
+              <option value="" disabled selected>Selecciona tu favorita</option>
+              <option value="Charcoal Milk Tea">Charcoal Milk Tea</option>
+              <option value="Thai Milk Tea">Thai Milk Tea</option>
+              <option value="Blue Milk">Blue Milk</option>
+              <option value="Brown Sugar">Brown Sugar</option>
+              <option value="Milk Tea">Milk Tea</option>
+              <option value="Matcha & Coco">Matcha & Coco</option>
+              <option value="Jamaica Milk">Jamaica Milk</option>
+              <option value="Coffee Milk">Coffee Milk</option>
+              <option value="Chocolate Milk">Chocolate Milk</option>
+              <option value="Jasmine Milk Tea">Jasmine Milk Tea</option>
+              <option value="Sago Mango">Sago Mango</option>
+              <option value="Oreo Slush Boba">Oreo Slush Boba</option>
+              <option value="Passion Fruit Cheezo">Passion Fruit Cheezo</option>
+              <option value="Strawberry Cheezo">Strawberry Cheezo</option>
+              <option value="Pineapple Cheezo">Pineapple Cheezo</option>
+              <option value="Fusion Cheezo">Fusion Cheezo</option>
+              <option value="Lemonade Cheezo">Lemonade Cheezo</option>
+              <option value="Smashed Black Tea">Smashed Black Tea</option>
+              <option value="Smashed Passion Fruit">
+                Smashed Passion Fruit
+              </option>
+              <option value="Smashed Jamaica Tea">Smashed Jamaica Tea</option>
+              <option value="Smashed Jasmine Tea">Smashed Jasmine Tea</option>
+            </select>
+          </div>
+
+          <button type="submit">ENVIAR</button>
         </form>
-        
+
         <div class="footer">
-            Visítanos en <a href="https://www.mercat.bo/happy-tea" style="color: var(--color-primary); text-decoration: none; font-weight: bold;">Mercat • Happy Tea</a>
+          Visítanos en
+          <a
+            href="https://www.mercat.bo/happy-tea"
+            style="
+              color: var(--color-primary);
+              text-decoration: none;
+              font-weight: bold;
+            "
+            >Mercat • Happy Tea</a
+          >
         </div>
+      </div>
     </div>
-
-    <script>
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const phone = document.getElementById('phone').value;
-            if (!/^[67]\d{7}$/.test(phone)) {
-                e.preventDefault();
-                alert('Por favor ingresa un número boliviano válido (8 dígitos comenzando con 6 o 7)');
-                document.getElementById('phone').focus();
-                return false;
-            }
-            return true;
-        });
-
-        // Mejor manejo de imágenes
-        document.addEventListener('DOMContentLoaded', function() {
-            const logo = document.querySelector('.logo');
-            logo.onerror = function() {
-                this.style.display = 'none';
-                const logoText = document.createElement('h1');
-                logoText.textContent = 'HAPPY TEA';
-                logoText.style.color = 'var(--color-primary)';
-                logoText.style.margin = '10px 0';
-                logo.parentNode.insertBefore(logoText, logo.nextSibling);
-            };
-            
-            // Precargar el fondo para mejor transición templates\wallpaper.png
-            const bg = new Image();
-            bg.src = '/templates/wallpaper.png';
-        });
-    </script>
-</body>
+  </body>
 </html>
