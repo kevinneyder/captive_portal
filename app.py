@@ -3,14 +3,26 @@ from openpyxl import Workbook, load_workbook
 from datetime import datetime
 import requests
 import os
+import socket
 
 app = Flask(__name__)
+
+def get_local_ip():
+    """GET local IP address"""
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "127.0.0.1"
 
 # ==============================
 # CONFIGURATION
 # ==============================
 EXCEL_FILE = "happy_tea_clients.xlsx"
-UNIFI_CONTROLLER_IP = "192.168.0.14"
+UNIFI_CONTROLLER_IP = get_local_ip()
 UNIFI_PORT = 8443
 UNIFI_USERNAME = "admin"
 UNIFI_PASSWORD = "admin"
@@ -18,7 +30,6 @@ UNIFI_SITE = "default"
 DEFAULT_REDIRECT = "http://connectivitycheck.gstatic.com/generate_204"
 
 requests.packages.urllib3.disable_warnings()
-
 
 # ==============================
 # UTILITIES
